@@ -1,5 +1,5 @@
 <?php
-require_once('env.php');
+require_once 'env.php';
 class Database
 {
     //Database credentials
@@ -20,9 +20,11 @@ class Database
                 $this->db_user,
                 $this->db_pass
             );
+
             //Enable errors for statements
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
+            //Get PDO Connection Exception
             echo 'Connection Error:' . $e->getMessage();
         }
         //Returns database connection

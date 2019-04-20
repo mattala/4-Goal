@@ -1,6 +1,9 @@
 <?php
 
-require_once 'ModelsBase.php';
+
+namespace Models;
+
+use Models\ModelsBase;
 
 class Team extends ModelsBase
 {

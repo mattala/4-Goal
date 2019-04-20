@@ -3,11 +3,10 @@
 //Database and altered headers attributes
 include_once '../../private/initialize.php';
 
-//Required model
-include_once MODELS_PATH . '/Player.php';
+//Import Model
+use Models\Player;
 
-
-
+//New instance of player
 $players = new Player($db);
 //Players query
 $result = $players->read();

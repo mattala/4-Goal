@@ -1,11 +1,15 @@
 <?php
-//Add an auto loader or namespaces?
-require_once 'ModelsBase.php';
+//Add auto loading namespaces?
+// require_once 'ModelsBase.php';
+
+namespace Models;
+
+use Models\ModelsBase;
 
 class Player extends ModelsBase
 {
     //DB related fields
-    // protected $conn;
+    public $conn;
     protected $table = 'players';
     //Player Properties
     public $id;
@@ -16,7 +20,7 @@ class Player extends ModelsBase
 
 
     //Constructor
-    public function __construct(PDO $db)
+    public function __construct($db)
     {
         $this->conn = $db;
     }

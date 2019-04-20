@@ -1,30 +1,15 @@
 <?php
+
+namespace Models;
+
 abstract class ModelsBase
 {
+    //All children classes have a table associated with it
     protected $table;
+    //All children classes will use this connection
     protected $conn;
-    //Cleans data of html tags and special characters
-    //Binds that data to the PDO statement
-    /**
-     * This method cleans data of any html tags
-     * @param $class String name of the class
-     * @param $stmt the PDO stmt to be executed
-     */
-    public function clean_binder(String $class, $stmt)
-    {
-        //Get this cla  ss vars
-        foreach (get_class_vars($class) as $prop) {
-            //Skip these fields
-            if ($prop == 'id' || $prop == 'table' || $prop == 'conn') {
-                //Skip these properties
-                continue;
-            }
-            //Clean the following in each iteration
-            $this->{$prop} = htmlspecialchars(strip_tags($this->$prop));
-            //Bind params
-            $stmt->bindParam(':' . $prop, $this->{$prop});
-        }
-    }
+
+
     //Read a table
     /**
      * Generic read method use in all children classes

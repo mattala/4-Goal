@@ -4,8 +4,11 @@
 
 
 //Needed scripts
-require_once('path_finder.php');
+require_once 'path_finder.php';
 require_once('Database.php');
+
+//Class Autoloader 
+require_once  PROJECT_PATH . '\vendor\autoload.php';
 
 #Request headers
 
