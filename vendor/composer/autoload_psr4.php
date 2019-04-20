@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Private\\' => array($baseDir . '/private'),
+    'PrivateStatic\\' => array($baseDir . '/private'),
     'Models\\' => array($baseDir . '/models'),
 );

@@ -1,11 +1,12 @@
 {
 	"autoload": {
 		"psr-4": {
-			"Private\\": "private/",
+			"PrivateStatic\\": "private/",
 			"Models\\": "models/"
 		},
 		"classmap": [
-			"models/"
+			"models/",
+			"private/"
 		]
 	}
 }

@@ -1,11 +1,11 @@
 <?php
-/** Requires the API SPECIFIC SCRIPTS */
-
-
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SESSION START<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+// Session start should be here 
 
 //Needed scripts
 require_once 'path_finder.php';
-require_once('Database.php');
+require_once 'Database.php';
+require_once 'Helper.php';
 
 //Class Autoloader 
 require_once  PROJECT_PATH . '\vendor\autoload.php';

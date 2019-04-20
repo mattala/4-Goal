@@ -9,7 +9,6 @@ use Models\ModelsBase;
 class Player extends ModelsBase
 {
     //DB related fields
-    public $conn;
     protected $table = 'players';
     //Player Properties
     public $id;

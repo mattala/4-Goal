@@ -17,7 +17,7 @@
             <a href="#" class="brand-logo">Logo</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="sass.html">Login</a></li>
-                <li><a href="badges.html">Register</a></li>
+                <li><a href="<?php echo url('/Auth/register.php'); ?>">Register</a></li>
             </ul>
         </div>
     </nav>

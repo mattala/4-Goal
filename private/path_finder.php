@@ -27,3 +27,17 @@ define("JS_PATH", PUBLIC_PATH . '/js');
 
 // root/private/shared
 define("SHARED_PATH", PRIVATE_PATH . '/shared');
+
+
+
+
+//Find Server root dynamically $_SERVER...
+// // // // // // // // // // // // // // // // $pwd = $_SERVER['SCRIPT_NAME'];
+// // // // // // // // // // // // // // // // Gets the present working directory in an array
+// // // // // // // // // // // // // // // // $pwd = explode('/',$_SERVER['SCRIPT_NAME']);
+//The desired
+//Search and finds where /app is located
+$app_pwd = strpos($_SERVER['SCRIPT_NAME'], '/app') + 4;
+//Cuts the string from its start[0] till the app directory end
+$domain_root = substr($_SERVER['SCRIPT_NAME'], 0, $app_pwd);
+define("WWW_ROOT", $domain_root);

@@ -9,7 +9,7 @@ class ComposerStaticInit1f710a6a214eae5b16c90c9e93b62962
     public static $prefixLengthsPsr4 = array (
         'P' => 
         array (
-            'Private\\' => 8,
+            'PrivateStatic\\' => 14,
         ),
         'M' => 
         array (
@@ -18,7 +18,7 @@ class ComposerStaticInit1f710a6a214eae5b16c90c9e93b62962
     );
 
     public static $prefixDirsPsr4 = array (
-        'Private\\' => 
+        'PrivateStatic\\' => 
         array (
             0 => __DIR__ . '/../..' . '/private',
         ),
@@ -29,9 +29,11 @@ class ComposerStaticInit1f710a6a214eae5b16c90c9e93b62962
     );
 
     public static $classMap = array (
+        'Database' => __DIR__ . '/../..' . '/private/Database.php',
         'Models\\ModelsBase' => __DIR__ . '/../..' . '/models/ModelsBase.php',
         'Models\\Player' => __DIR__ . '/../..' . '/models/Player.php',
         'Models\\Team' => __DIR__ . '/../..' . '/models/Team.php',
+        'PrivateStatic\\Helper' => __DIR__ . '/../..' . '/private/Helper.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
