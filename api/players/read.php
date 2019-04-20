@@ -4,16 +4,14 @@
 include_once '../../private/initialize.php';
 
 //Required model
-include_once MODELS_PATH . '/Players.php';
+include_once MODELS_PATH . '/Player.php';
 
-//New instance of DB & Connection
-$database = new Database();
-//DB connection;
-$db = $database->connect();
 
-$players = new players($db);
+
+$players = new Player($db);
 //Players query
-$result = $players->read_all();
+$result = $players->read();
+
 
 //Get row count
 $num = $result->rowCount();
@@ -31,7 +29,6 @@ if ($num > 0) {
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         //Extract record
         extract($row);
-        var_dump($id);
         //Add record in an associative array
         $player_record = [
             'id' => $id,
