@@ -1,9 +1,8 @@
 <?php
 
 include_once '../../private/initialize.php';
-//Needed model
-include_once MODELS_PATH . '/Player.php';
-
+//Import model
+use Models\Player;
 //Extra needed HTTP Attributes for post request
 header('Access-Control-Allow-Methods: POST');
 //Allowing headers for POST (including the ones in initialize.php)

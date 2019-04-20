@@ -1,8 +1,8 @@
 <?php
 //Path constants and DB connection
 include_once '../../private/initialize.php';
-//Needed model
-include_once MODELS_PATH . '/Player.php';
+//Import model
+use Models\Player;
 
 //Global variable $db
 $player = new Player($db);
