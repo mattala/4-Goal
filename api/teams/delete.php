@@ -1,5 +1,7 @@
 <?php
-
+//Enable api headers..
+$is_api = true;
+//initialize script
 include_once '../../private/initialize.php';
 //Needed model
 include_once MODELS_PATH . '/team.php';

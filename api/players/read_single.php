@@ -1,4 +1,7 @@
 <?php
+//Enable api headers..
+$is_api = true;
+//initialize script
 //Path constants and DB connection
 include_once '../../private/initialize.php';
 //Import model

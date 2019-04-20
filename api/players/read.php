@@ -1,5 +1,7 @@
 <?php
-
+//Enable api headers..
+$is_api = true;
+//initialize script
 //Database and altered headers attributes
 include_once '../../private/initialize.php';
 

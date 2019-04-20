@@ -13,9 +13,11 @@ require_once  PROJECT_PATH . '\vendor\autoload.php';
 #Request headers
 
 //Allow access with header attributes override
-header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
-
+//API Specific
+if (isset($is_api)) {
+    header('Access-Control-Allow-Origin: *');
+    header('Content-Type: application/json');
+}
 
 #Globally accessible database connection
 
