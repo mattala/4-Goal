@@ -2,7 +2,7 @@
 
 include_once '../../private/initialize.php';
 //Needed model
-include_once MODELS_PATH . '/Players.php';
+include_once MODELS_PATH . '/Player.php';
 
 //Extra needed HTTP Attributes for post request
 header('Access-Control-Allow-Methods: POST');
@@ -11,7 +11,7 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
 
 
 //New instance of player
-$player = new Players($db);
+$player = new Player($db);
 
 
 //Get raw posted data as an object

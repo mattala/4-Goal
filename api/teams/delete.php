@@ -2,7 +2,7 @@
 
 include_once '../../private/initialize.php';
 //Needed model
-include_once MODELS_PATH . '/Player.php';
+include_once MODELS_PATH . '/team.php';
 
 //Extra needed HTTP Attributes for post request
 header('Access-Control-Allow-Methods: DELETE');
@@ -10,23 +10,23 @@ header('Access-Control-Allow-Methods: DELETE');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Authorization,X-Requested-With');
 
 
-//New instance of player
-$player = new Player($db);
+//New instance of team
+$team = new team($db);
 
 
 //Get raw posted data as an object 
 $data = json_decode(file_get_contents("php://input"));
 
 //Set ID to DELETE
-$player->id = $data->id;
+$team->id = $data->id;
 
-//Delete Player
-if ($player->delete()) {
+//Delete team
+if ($team->delete()) {
     echo json_encode([
-        'message' => 'Player Deleted.'
+        'message' => 'Team Deleted.'
     ]);
 } else {
     echo json_encode([
-        'message' => 'Player NOT Deleted.'
+        'message' => 'Team NOT Deleted.'
     ]);
 }

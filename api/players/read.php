@@ -4,11 +4,11 @@
 include_once '../../private/initialize.php';
 
 //Required model
-include_once MODELS_PATH . '/Players.php';
+include_once MODELS_PATH . '/Player.php';
 
 
 
-$players = new players($db);
+$players = new Player($db);
 //Players query
 $result = $players->read();
 

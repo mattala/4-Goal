@@ -2,10 +2,10 @@
 //Path constants and DB connection
 include_once '../../private/initialize.php';
 //Needed model
-include_once MODELS_PATH . '/Players.php';
+include_once MODELS_PATH . '/Player.php';
 
 //Global variable $db
-$player = new Players($db);
+$player = new Player($db);
 
 //kill request if id was not set as a GET parameter
 $player->id = $_GET['id'] ??  die('No player id was specified');

@@ -1,6 +1,8 @@
 <?php
-class ModelsBase
+abstract class ModelsBase
 {
+    protected $table;
+    protected $conn;
     //Cleans data of html tags and special characters
     //Binds that data to the PDO statement
     /**
@@ -10,7 +12,7 @@ class ModelsBase
      */
     public function clean_binder(String $class, $stmt)
     {
-        //Get this class vars
+        //Get this cla  ss vars
         foreach (get_class_vars($class) as $prop) {
             //Skip these fields
             if ($prop == 'id' || $prop == 'table' || $prop == 'conn') {

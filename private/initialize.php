@@ -1,4 +1,8 @@
 <?php
+/** Requires the API SPECIFIC SCRIPTS */
+
+
+
 //Needed scripts
 require_once('path_finder.php');
 require_once('Database.php');
