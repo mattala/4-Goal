@@ -10,7 +10,7 @@ class Team extends ModelsBase
     //Set table name
     protected $table = 'teams';
     //Team attributes
-    public $id;
+    // public $id;
     public $name;
     public $team_size;
 
@@ -20,5 +20,11 @@ class Team extends ModelsBase
     public function __construct(PDO $db)
     {
         $this->conn = $db;
+    }
+
+    //For URL parameters
+    public function get_id()
+    {
+        return $this->id;
     }
 }

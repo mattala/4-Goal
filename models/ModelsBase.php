@@ -9,7 +9,7 @@ abstract class ModelsBase
     //All children classes will use this connection
     protected $conn;
 
-
+    protected $id;
     //Read a table
     /**
      * Generic read method use in all children classes
@@ -27,6 +27,34 @@ abstract class ModelsBase
 
         //Return the executed statement
         return $stmt;
+    }
+
+    //Read one player
+    public function read_single()
+    {
+
+        //SQL to be prepared and then executed
+        $sql = 'SELECT * 
+                FROM ' . $this->table . ' WHERE id = ? LIMIT 1';
+
+        //Prepare statement        
+        $stmt = $this->conn->prepare($sql);
+
+        //Bind parameters
+        $stmt->bindParam(1, $this->id);
+
+        //Execute Query
+        $stmt->execute();
+
+        //It's known that we will fetch one and only one row
+        //Fetch Assoc mode
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //Set properties
+        $this->name = $row['name'];
+        $this->phone = $row['phone'];
+        $this->skill_rating = $row['skill_rating'];
+        $this->man_of_the_match = $row['man_of_the_match'];
     }
 
 
@@ -53,5 +81,9 @@ abstract class ModelsBase
         //If delete fails
         echo "Encountered Error: " . $stmt->error;
         return false;
+    }
+    public function set_id($id)
+    {
+        $id = $this->id;
     }
 }
