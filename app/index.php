@@ -3,11 +3,10 @@
 
 <!-- Shared header $title before calling this script for custom page titles -->
 <?php include_once SHARED_PATH . '/header.php' ?>
-
-<div class="container">
-    <div id="title">
-
+<main>
+    <div class="container">
+        <?php  ?>
     </div>
-</div>
+</main>
 <!-- Shared footer -->
 <?php include_once SHARED_PATH . '/footer.php' ?>

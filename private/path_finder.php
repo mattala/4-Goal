@@ -18,8 +18,8 @@ define("PUBLIC_PATH", PROJECT_PATH . '/public');
 // root/public/assets
 define("ASSETS_PATH", PUBLIC_PATH . '/assets');
 
-// root/public/style
-define("STYLE_PATH", PUBLIC_PATH . '/style');
+// root/public/css
+define("CSS_PATH", PUBLIC_PATH . '/css');
 
 // root/public/js
 define("JS_PATH", PUBLIC_PATH . '/js');
@@ -33,9 +33,10 @@ define("SHARED_PATH", PRIVATE_PATH . '/shared');
 
 //Find Server root dynamically $_SERVER...
 // // // // // // // // // // // // // // // // $pwd = $_SERVER['SCRIPT_NAME'];
-// // // // // // // // // // // // // // // // Gets the present working directory in an array
+// // // // // // // // // // // // // // // // Gets the present working directory
 // // // // // // // // // // // // // // // // $pwd = explode('/',$_SERVER['SCRIPT_NAME']);
-//The desired
+
+
 //Search and finds where /app is located
 $app_pwd = strpos($_SERVER['SCRIPT_NAME'], '/app') + 4;
 //Cuts the string from its start[0] till the app directory end

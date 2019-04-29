@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* Setting up flex display */
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	font-family: 'Roboto', sans-serif;
+}
+/* Specifies main content and push footer to the bottom */
+main {
+	flex: 1 0 auto;
+}
+#logo {
+	margin-left: 2em;
+	width: 2em;
+	height: 2em;
+	border: #388e3c 1px solid;
+	border-radius: 50%;
+}

@@ -1,7 +1,7 @@
 {
 	"autoload": {
 		"psr-4": {
-			"PrivateStatic\\": "private/",
+			"Private\\": "private/",
 			"Models\\": "models/"
 		},
 		"classmap": [

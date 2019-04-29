@@ -1,5 +1,6 @@
 <?php
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SESSION START<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+session_start();
 // Session start should be here 
 
 //Needed scripts
@@ -12,6 +13,7 @@ require_once  PROJECT_PATH . '\vendor\autoload.php';
 
 #Request headers
 
+/**TO BE REMOVED */
 //Allow access with header attributes override
 //API Specific
 if (isset($is_api)) {
@@ -20,7 +22,6 @@ if (isset($is_api)) {
 }
 
 #Globally accessible database connection
-
 //New instance of DB & Connection
 $database = new Database();
 //DB connection;
