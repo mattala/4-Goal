@@ -6,7 +6,11 @@ use Models\Player;
 
 
 $player = new Player($db);
-//......
+/** ......TO BE CHANGED FETCHING ONE ROW DOESNT WORK                       
+ *                       ||                     
+ *                       V                    
+ */
+
 extract($_POST);
 $con = mysqli_connect('localhost', 'root', '', 'four_and_goal') or die('connection failed');
 $selectquery = "select * from Users where email='$email'";
@@ -16,6 +20,9 @@ if ($output = mysqli_fetch_assoc($result)) {
         //Set session variables
         $_SESSION['user_id'] = $output['id'];
         //Find player name
+        /**BUG??????? ||
+         *            V
+         */
         $player->fetch_name($output['id']);
         $_SESSION['user_name'] = $player->name;
         //Unset errors if any exist
