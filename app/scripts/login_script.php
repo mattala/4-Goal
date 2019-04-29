@@ -5,34 +5,34 @@ use Models\User;
 use Models\Player;
 
 
-$user = new User($db);
-
-// 1. Verify email match
-if ($user->login($_POST['email'])) {
-    // 2. password hash match
-    if (password_verify($_POST['password'], $user->password)) {
-        // 3. fetch player name from players table...
-        //New instance of player
-        $player = new Player($db);
-        //Fetch player name
-        $player->fetch_name($user->id);
-        // 4. set session vars
-        $_SESSION['user_id'] = $user->id;
+$player = new Player($db);
+//......
+extract($_POST);
+$con = mysqli_connect('localhost', 'root', '', 'four_and_goal') or die('connection failed');
+$selectquery = "select * from Users where email='$email'";
+$result = mysqli_query($con, $selectquery);
+if ($output = mysqli_fetch_assoc($result)) {
+    if (password_verify($password, $output['password'])) {
+        //Set session variables
+        $_SESSION['user_id'] = $output['id'];
+        //Find player name
+        $player->fetch_name($output['id']);
         $_SESSION['user_name'] = $player->name;
-        //Unset errors
+        //Unset errors if any exist
         if (isset($_SESSION['errors'])) {
             unset($_SESSION['errors']);
         }
-        // 5. redirect to home
+        //Redirect to homepage
         redirect('index.php');
     } else {
-        // $_SESSION['errors'] = ['failure' => 'Email or Password were wrong.'];
-        // back();
-        var_dump($user->password);
-        var_dump(password_verify($_POST['password'], $user->password));
-        exit;
+        $_SESSION['errors'] = ['failed' => 'Email or Password was wrong.'];
+        back();
     }
 } else {
-    $_SESSION['errors'] = ['failure' => 'Email or Password were wrong.'];
+    $_SESSION['errors'] = ['failed' => 'Email or Password was wrong.'];
     back();
 }
+// extract($_POST);
+// $user->email = $email;
+// $user->login();
+// // var_dump($user);
