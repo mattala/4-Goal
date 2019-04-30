@@ -4,6 +4,7 @@
 namespace Models;
 
 use Models\ModelsBase;
+use PDO;
 
 class Team extends ModelsBase
 {
@@ -17,14 +18,58 @@ class Team extends ModelsBase
     //con
 
     //Constructor
-    public function __construct(PDO $db)
+    public function __construct($db)
     {
         $this->conn = $db;
     }
 
-    //For URL parameters
-    public function get_id()
+    /**
+     * @return bool operation result
+     */
+    public function create()
     {
-        return $this->id;
+        //SQL Query Statement
+        $sql = "INSERT INTO " . $this->table . " SET name =:name, team_size=:team_size";
+
+        $stmt = $this->conn->prepare($sql);
+        //Parameters binding
+        $stmt->bindParam(':name', $this->name);
+        $stmt->bindParam(':team_size', $this->team_size);
+
+        //Handle errors
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            //When insert fails
+            echo "Error: " . $stmt->error;
+            return false;
+        }
+    }
+    /**
+     * @return void select one player
+     */
+    public function read_single()
+    {
+
+        //SQL to be prepared and then executed
+        $sql = 'SELECT * 
+                FROM ' . $this->table . ' WHERE id = ? LIMIT 1';
+
+        //Prepare statement        
+        $stmt = $this->conn->prepare($sql);
+
+        //Bind parameters
+        $stmt->bindParam(1, $this->id);
+
+        //Execute Query
+        $stmt->execute();
+
+        //It's known that we will fetch one and only one row
+        //Fetch Assoc mode
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //Set properties
+        $this->name = $row['name'];
+        $this->team_size = $row['team_size'];
     }
 }

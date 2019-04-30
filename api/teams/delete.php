@@ -13,7 +13,7 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
 
 
 //New instance of team
-$team = new team($db);
+$team = new team($_DB);
 
 
 //Get raw posted data as an object 

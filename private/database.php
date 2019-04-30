@@ -10,7 +10,9 @@ class Database
     private $db_name = DB_NAME;
     //PDO Connection
     private $conn = null;
-
+    /**
+     * @return PDO Connection to database
+     */
     public function connect()
     {
         try {
@@ -22,12 +24,26 @@ class Database
             );
 
             //Enable errors for statements
+            $this->conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            //Change default fetch mode
+            $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             //Get PDO Connection Exception
             echo 'Connection Error:' . $e->getMessage();
+            die();
         }
         //Returns database connection
         return $this->conn;
+    }
+
+    /**
+     * @return array Custom select query
+     */
+    public function query($sql)
+    {
+        $stmt = $this->conn->query($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 }

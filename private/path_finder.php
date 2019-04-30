@@ -37,7 +37,7 @@ define("SHARED_PATH", PRIVATE_PATH . '/shared');
 // // // // // // // // // // // // // // // // $pwd = explode('/',$_SERVER['SCRIPT_NAME']);
 
 
-//Search and finds where /app is located
+//Search and finds where /app string is located and store its position
 $app_pwd = strpos($_SERVER['SCRIPT_NAME'], '/app') + 4;
 //Cuts the string from its start[0] till the app directory end
 $domain_root = substr($_SERVER['SCRIPT_NAME'], 0, $app_pwd);

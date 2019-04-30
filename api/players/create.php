@@ -19,7 +19,7 @@ header('Access-Control-Allow-Headers: *');
 use Models\Player;
 
 //New instance of player
-$player = new Player($db);
+$player = new Player($_DB);
 
 
 //Get raw posted data as an object

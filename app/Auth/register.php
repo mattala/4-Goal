@@ -43,7 +43,7 @@ include SHARED_PATH . '/header.php';
                 <div class="row ">
                     <div class="input-field col 6">
                         <button class="btn waves-effect waves-light" type="submit">Submit
-                            <i class="material-icons arrow_forward"></i>
+                            <i class="material-icons right"></i>
                         </button>
                     </div>
                 </div>

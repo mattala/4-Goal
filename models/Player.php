@@ -61,14 +61,15 @@ class Player extends ModelsBase
     public function update()
     {
         $sql = 'UPDATE ' . $this->table .
-            ' SET 
+            'SET   
                     name =:name,
                     phone =:phone,
                     skill_rating =:skill_rating,
-                    man_of_the_match =:man_of_the_match
-                WHERE
+                    man_of_the_match =:man_of_the_match,
+                    user_id =:user_id
+            WHERE
                     id = :id
-                LIMIT 1';
+            LIMIT 1';
         //Prepare statement
         $stmt = $this->conn->prepare($sql);
 

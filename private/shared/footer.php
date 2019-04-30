@@ -24,9 +24,17 @@
       </div>
     </div>
   </footer>
-
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- General js script -->
+  <script src="<?php echo url('/js/main.js'); ?>"></script>
+  <!-- Vue Specific Scripts -->
+  <!-- Vue CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <!-- Axios CDN -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- Vue Script -->
+  <script src="<?php echo url('/js/app.js'); ?>"></script>
   </body>
 
   </html>

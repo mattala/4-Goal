@@ -18,3 +18,15 @@ main {
 	border: #388e3c 1px solid;
 	border-radius: 50%;
 }
+
+#map {
+	height: 80%;
+}
+.modal {
+	width: 75% !important ;
+	max-height: 100% !important ;
+	overflow-y: hidden !important ;
+}
+#navbar {
+	margin-top: 8px;
+}

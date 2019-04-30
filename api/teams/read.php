@@ -8,7 +8,7 @@ include_once '../../private/initialize.php';
 include_once MODELS_PATH . '/Team.php';
 
 //Team object
-$team = new Team($db);
+$team = new Team($_DB);
 
 //DB Execute query
 $result = $team->read();

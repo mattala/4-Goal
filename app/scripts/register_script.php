@@ -8,9 +8,9 @@ use Models\Player;
 extract($_POST);
 
 //New instance of User
-$user = new User($db);
+$user = new User($_DB);
 //New instance of Player
-$player = new Player($db);
+$player = new Player($_DB);
 
 //Assigning variables to user
 

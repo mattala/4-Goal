@@ -16,12 +16,15 @@ function url($script_name)
  */
 function redirect($destination)
 {
+    if (strpos($destination, '.php') == NULL) {
+        $destination = $destination . '.php';
+    }
     header("Location: " . url($destination));
     exit;
 }
 
 /**
- * Redirects back to the source page/form
+ * @return void Redirects back to the source page || form
  */
 function back()
 {
@@ -47,4 +50,22 @@ function active_page($script_name)
 {
     if (is_active($script_name))
         echo 'active';
+}
+
+/**
+ * @return void clears session errors
+ */
+function clear_errors()
+{
+    if (isset($_SESSION['errors']))
+        unset($_SESSION['errors']);
+}
+
+/**
+ * @return void dump&die will var_dump and stop script execution
+ */
+function dd($getting_dumped)
+{
+    var_dump($getting_dumped);
+    die();
 }

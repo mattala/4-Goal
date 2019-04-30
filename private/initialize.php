@@ -24,5 +24,5 @@ if (isset($is_api)) {
 #Globally accessible database connection
 //New instance of DB & Connection
 $database = new Database();
-//DB connection;
-$db = $database->connect();
+//Global DB connection;
+$_DB = $database->connect();

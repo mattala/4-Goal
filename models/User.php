@@ -19,11 +19,7 @@ class User extends ModelsBase
     {
         $this->conn = $db;
     }
-    /**Get last inserted id */
-    public function last_insert_id()
-    {
-        return $this->conn->lastInsertId();
-    }
+
     /**Registers a user */
     public function register()
     {
@@ -57,9 +53,6 @@ class User extends ModelsBase
 
         //Prepare statement        
         $stmt = $this->conn->prepare($sql);
-
-        var_dump($sql);
-        die();
         //Bind parameters
         $stmt->bindParam(1, $this->email);
 
@@ -69,8 +62,6 @@ class User extends ModelsBase
         //It's known that we will fetch one and only one row
         //Fetch Assoc mode
         $row = $stmt->fetch();
-        var_dump($row);
-        die();
         $row['email'] = $this->email;
         $row['password'] = $this->password;
     }

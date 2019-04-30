@@ -14,6 +14,7 @@ abstract class ModelsBase
     //Read a table
     /**
      * Generic read method use in all children classes
+     * @return array of records
      */
     public function read()
     {
@@ -36,6 +37,7 @@ abstract class ModelsBase
     //Delete table record
     /**
      * Generic delete method used in all children classes
+     * @return bool Result of operation
      */
     public function delete()
     {
@@ -57,8 +59,9 @@ abstract class ModelsBase
         echo "Encountered Error: " . $stmt->error;
         return false;
     }
-    public function set_id($id)
+    /**Get last inserted id */
+    public function last_insert_id()
     {
-        $id = $this->id;
+        return $this->conn->lastInsertId();
     }
 }

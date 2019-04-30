@@ -13,7 +13,7 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,
 
 
 //New instance of player
-$player = new Player($db);
+$player = new Player($_DB);
 
 
 //Get raw posted data as an object

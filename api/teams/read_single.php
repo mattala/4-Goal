@@ -8,4 +8,4 @@ use Models\Team;
 $id = $_GET['id'] ?? die('Message: No id was set');
 
 
-$team = new Team($db);
+$team = new Team($_DB);

@@ -7,8 +7,8 @@ include_once '../../private/initialize.php';
 //Import model
 use Models\Player;
 
-//Global variable $db
-$player = new Player($db);
+//Global variable $_DB
+$player = new Player($_DB);
 
 //kill request if id was not set as a GET parameter
 $player->id = $_GET['id'] ??  die('No player id was specified');

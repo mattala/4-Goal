@@ -5,7 +5,7 @@ use Models\User;
 use Models\Player;
 
 
-$player = new Player($db);
+$player = new Player($_DB);
 /** ......TO BE CHANGED FETCHING ONE ROW DOESNT WORK                       
  *                       ||                     
  *                       V                    

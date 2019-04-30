@@ -9,7 +9,7 @@ include_once '../../private/initialize.php';
 use Models\Player;
 
 //New instance of player
-$players = new Player($db);
+$players = new Player($_DB);
 //Players query
 $result = $players->read();
 
