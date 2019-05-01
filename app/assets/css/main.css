@@ -15,8 +15,6 @@ main {
 	margin-left: 2em;
 	width: 2em;
 	height: 2em;
-	border: #388e3c 1px solid;
-	border-radius: 50%;
 }
 
 #map {

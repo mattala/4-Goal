@@ -3,9 +3,11 @@ include_once '../../private/initialize.php';
 
 use Models\User;
 use Models\Player;
-
+use Models\Team;
 
 $player = new Player($_DB);
+$team = new Team($_DB);
+
 /** ......TO BE CHANGED FETCHING ONE ROW DOESNT WORK                       
  *                       ||                     
  *                       V                    
@@ -23,8 +25,10 @@ if ($output = mysqli_fetch_assoc($result)) {
         /**BUG??????? ||
          *            V
          */
-        $player->fetch_name($output['id']);
-        $_SESSION['user_name'] = $player->name;
+        $out_player = $player->fetch_player($output['id']);
+        $_SESSION['player_id'] = $out_player['id'];
+        $_SESSION['player_name'] = $out_player['name'];
+        $_SESSION['team_id'] = $out_player['team_id'];
         //Unset errors if any exist
         if (isset($_SESSION['errors'])) {
             unset($_SESSION['errors']);

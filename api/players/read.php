@@ -26,7 +26,6 @@ if ($num > 0) {
     $players_arr['data'] = array();
 
     //While there is a record keep fetching data...
-    #$result->fetchAll is problematic
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         //Extract record
         extract($row);

@@ -12,7 +12,7 @@ function url($script_name)
 }
 /**
  * changes header location and exit executing
- * internally uses url function only need path is after the /app/ directory
+ * internally uses url function for /app/ directory
  */
 function redirect($destination)
 {

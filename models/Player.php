@@ -17,6 +17,7 @@ class Player extends ModelsBase
     public $skill_rating;
     public $man_of_the_match;
     public $user_id;
+    public $team_id;
 
     //Constructor
     public function __construct($db)
@@ -47,7 +48,6 @@ class Player extends ModelsBase
         $stmt->bindParam(':skill_rating', $this->skill_rating);
         $stmt->bindParam(':man_of_the_match', $this->man_of_the_match);
         $stmt->bindParam(':user_id', $this->user_id);
-
         //If the prepared statement executes
         if ($stmt->execute()) {
             return true;
@@ -116,10 +116,10 @@ class Player extends ModelsBase
     }
 
     /**
-     * Login fetch player name method
-     * @return void player name set to object
+     * Login fetch player 
+     * @return array player based on user id
      */
-    public function fetch_name($user_id)
+    public function fetch_player($user_id)
     {
         //SQL to be prepared and then executed
         $sql = 'SELECT * 
@@ -138,6 +138,6 @@ class Player extends ModelsBase
         //Fetch Assoc mode
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $row['name'] = $this->name;
+        return $row;
     }
 }

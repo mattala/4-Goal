@@ -3,7 +3,8 @@
 require_once '../../private/initialize.php';
 //Unset session vars.
 //Better unset the whole session? <<<<<<<<<<<< Revisit
-unset($_SESSION['user_id']);
-unset($_SESSION['user_name']);
+// unset($_SESSION['user_id']);
+// unset($_SESSION['user_name']);
+session_destroy();
 //Redirect to homepage
 redirect('index.php');

@@ -5,6 +5,7 @@
 <?php include_once SHARED_PATH . '/header.php' ?>
 <main>
     <div class="container">
+        <?php var_dump($_SESSION); ?>
     </div>
 </main>
 <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2fswOX43Lzn4DIscVIJPe_btKUyZFyuk
