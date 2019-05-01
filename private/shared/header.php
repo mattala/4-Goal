@@ -28,7 +28,7 @@
         <div class="container">
             <div class="nav-wrapper">
                 <!-- Dynamically find home page -->
-                <a href="<?php echo url('index.php') ?>" class="brand-logo"><img class="hoverable" src="<?php echo url('/assets/56627412_292507938332398_4787761600046039040_n.png'); ?>" id="logo"></a>
+                <a href="<?php echo url('index.php') ?>" class="brand-logo"><img class="hoverable" src="<?php echo url('/assets/img/56627412_292507938332398_4787761600046039040_n.png'); ?>" id="logo"></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <!-- FOR LOGGED IN USER -->
                     <?php if (!isset($_SESSION['user_id'])) : ?>

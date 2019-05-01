@@ -56,7 +56,7 @@ abstract class ModelsBase
         }
 
         //If delete fails
-        echo "Encountered Error: " . $stmt->error;
+        echo "Error: " . $stmt->error;
         return false;
     }
     /**Get last inserted id */

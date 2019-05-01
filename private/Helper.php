@@ -1,7 +1,7 @@
 <?php
 
 /** 
- * returns the full valid path to a script starting from www_root/app/...  
+ * @return string the full valid path to a script starting from fourgoal/app/...  
  */
 function url($script_name)
 {
@@ -45,6 +45,7 @@ function is_active($script_name)
 
 /**
  * a wrapper for your wrapper to wrap while you are wrapping.
+ * @return string echoed {{ active }}
  */
 function active_page($script_name)
 {
@@ -68,4 +69,25 @@ function dd($getting_dumped)
 {
     var_dump($getting_dumped);
     die();
+}
+
+
+
+/**
+ * Handles URL manipulation
+ * @return bool check if the reference url is correct | Internally uses url()
+ */
+function is_from($script_name)
+{
+    //Get Reference url from $_SERVER GLOBAL VAR
+    $ref = $_SERVER['HTTP_REFERER'];
+    //Get URL to be matched
+    // /app/$script_name
+    $double_check = url($script_name);
+    //Get the position where the /fourgoal/ string starts
+    $start_at = strpos($ref, '/fourgoal');
+    //Cut the URL starting from -> end of string
+    $generic_link = substr($ref, $start_at, strlen($ref));
+    //Bool expression
+    return $generic_link === $double_check;
 }

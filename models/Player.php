@@ -61,12 +61,13 @@ class Player extends ModelsBase
     public function update()
     {
         $sql = 'UPDATE ' . $this->table .
-            'SET   
+            ' SET   
                     name =:name,
                     phone =:phone,
                     skill_rating =:skill_rating,
                     man_of_the_match =:man_of_the_match,
-                    user_id =:user_id
+                    user_id =:user_id,
+                    team_id =:team_id
             WHERE
                     id = :id
             LIMIT 1';
@@ -79,7 +80,8 @@ class Player extends ModelsBase
         $stmt->bindParam(':skill_rating', $this->skill_rating);
         $stmt->bindParam(':man_of_the_match', $this->man_of_the_match);
         $stmt->bindParam(':id', $this->id);
-
+        $stmt->bindParam(':user_id', $this->user_id);
+        $stmt->bindParam(':team_id', $this->team_id);
         //If the prepared statement executes
         if ($stmt->execute()) {
             return true;
