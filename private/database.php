@@ -38,12 +38,17 @@ class Database
     }
 
     /**
-     * @return array Custom select query
+     * @return array Custom query
      */
     public function query($sql)
     {
         $stmt = $this->conn->query($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function row_count()
+    {
+        return $this->conn->rowCount();
     }
 }

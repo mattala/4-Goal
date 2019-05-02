@@ -33,7 +33,7 @@ function back()
 }
 
 /**
- * current page is active.
+ * @return bool page is active
  */
 function is_active($script_name)
 {
@@ -54,12 +54,14 @@ function active_page($script_name)
 }
 
 /**
- * @return void clears session errors
+ * @return void clears session errors and warnings
  */
 function clear_errors()
 {
-    if (isset($_SESSION['errors']))
+    if (isset($_SESSION['errors']) || isset($_SESSION['warnings'])) {
         unset($_SESSION['errors']);
+        unset($_SESSION['warning']);
+    }
 }
 
 /**

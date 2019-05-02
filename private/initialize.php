@@ -23,6 +23,6 @@ if (isset($is_api)) {
 
 #Globally accessible database connection
 //New instance of DB & Connection
-$database = new Database();
+$DATABASE = new Database();
 //Global DB connection;
-$_DB = $database->connect();
+$_DB = $DATABASE->connect();

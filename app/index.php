@@ -16,9 +16,31 @@ $team_collection = $team->read();
         <div class="row">
             <h3>All Teams</h3>
         </div>
-        <?php foreach ($team_collection as $t) { ?>
-            <?php echo $t['name']; ?>
-            <br />
+        <?php foreach ($team_collection as $team_item) {
+            $sql = "SELECT * FROM players WHERE team_id=" . $team_item['id'];
+            ?>
+            <div class="card left" style="margin-right:30px">
+                <div>
+
+                    <div class="card-content">
+                        <span class="card-title  grey-text text-darken-4"><?php echo $team_item['name']; ?> </span>
+                        <i class="grey-text">Team Members:</i>
+                        <ul class="collection">
+
+                            <?php foreach ($_DB->query($sql) as $player) { ?>
+
+                                <li class="collection-item"><?php echo $player['name']; ?></li>
+                            <?php } ?>
+                        </ul>
+                        <?php if ($team_item['id'] != $_SESSION['team_id']) : ?>
+                            <a class="waves-effect waves-light btn green" href="<?php echo url('/scripts/join_team.php?team_id=' . $team_item['id']); ?>">Join Team</a>
+                        <?php else : ?>
+                            <a class="waves-effect waves-light btn red" href="<?php echo url('/scripts/leave_team.php?team_id=' . $team_item['id']); ?>">Leave Team</a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+
         <?php } ?>
     </div>
 </main>

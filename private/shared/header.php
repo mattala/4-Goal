@@ -61,7 +61,7 @@
                     </div>
                     <div class="col s3">
                         <!-- Send team id as a GET parameter -->
-                        <a class="waves-effect waves-light btn-small" href="<?php echo url('/pages/view_team.php'); ?>">View Team</a>
+                        <a class="waves-effect waves-light btn-small blue darken-4" href="<?php echo url('/pages/view_team.php'); ?>">View Team</a>
                     </div>
                 </div>
 
