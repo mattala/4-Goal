@@ -12,6 +12,7 @@ class Player extends ModelsBase
     protected $table = 'players';
     //Player Properties
     //Migrated id to a more OOP approach models base...
+    public $id;
     public $name;
     public $phone;
     public $skill_rating;
@@ -135,7 +136,6 @@ class Player extends ModelsBase
 
         //Execute Query
         $stmt->execute();
-
         //It's known that we will fetch one and only one row
         //Fetch Assoc mode
         $row = $stmt->fetch(PDO::FETCH_ASSOC);

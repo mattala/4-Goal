@@ -30,3 +30,10 @@ main {
 #navbar {
 	margin-top: 8px;
 }
+
+.coli {
+	width: 30%;
+	min-height: 300px;
+	max-height: auto;
+	display: inline-block;
+}

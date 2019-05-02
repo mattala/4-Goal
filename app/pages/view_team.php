@@ -7,7 +7,7 @@ $team = new Team($_DB);
 if (isset($_SESSION['team_id'])) {
     $team->id = $_SESSION['team_id'];
 } else {
-    $_SESSION['Errors'] = ['No Team' => 'Create a team or join a existing one to view team.'];
+    $_SESSION['Errors'] = ['no_team' => 'Create a team or join a existing one to view team.'];
     redirect('index');
 }
 //Fetch the row with that id

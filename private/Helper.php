@@ -60,7 +60,7 @@ function clear_errors()
 {
     if (isset($_SESSION['errors']) || isset($_SESSION['warnings'])) {
         unset($_SESSION['errors']);
-        unset($_SESSION['warning']);
+        unset($_SESSION['warnings']);
     }
 }
 
@@ -92,4 +92,13 @@ function is_from($script_name)
     $generic_link = substr($ref, $start_at, strlen($ref));
     //Bool expression
     return $generic_link === $double_check;
+}
+/**
+ * Alias function to $_SESSION['key']
+ * @param $session_var_name has to be a string as all session keys are.
+ * @return string session variable
+ */
+function session(String $session_var_name)
+{
+    return $_SESSION[$session_var_name];
 }

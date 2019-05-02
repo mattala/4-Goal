@@ -25,12 +25,15 @@ try {
         $player->name = $name;
         $player->phone = $phone;
         $player->user_id = $user->last_insert_id();
-
         //Insert into players if rows effected > 1 ...
         if ($player->create()) {
+
             //Set session variables
             $_SESSION['user_id'] = $user->last_insert_id();
-            $_SESSION['user_name'] = $player->name;
+            $_SESSION['player_id'] = $player->last_insert_id();
+            $_SESSION['player_name'] = $player->name;
+            $_SESSION['team_id'] = $player->team_id;
+
             //Unset errors if any exist
             if (isset($_SESSION['errors'])) {
                 unset($_SESSION['errors']);

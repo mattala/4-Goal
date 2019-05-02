@@ -25,7 +25,7 @@ if ($output = mysqli_fetch_assoc($result)) {
         /**BUG??????? ||
          *            V
          */
-        $out_player = $player->fetch_player($output['id']);
+        $out_player = $player->fetch_player($_SESSION['user_id']);
         $_SESSION['player_id'] = $out_player['id'];
         $_SESSION['player_name'] = $out_player['name'];
         $_SESSION['team_id'] = $out_player['team_id'];

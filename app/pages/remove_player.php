@@ -28,11 +28,13 @@ if (is_from('/pages/view_team.php') || is_from('/pages/remove_player.php?player_
         //Get player info assigned to this instance of player
         $player->read_single();
         //Remove player from team
-        $player->team_id = 0;
+        $player->team_id = NULL;
         //Update player by removing his team id
         $player->update();
         //Clear temp id
         unset($_SESSION['temp_id']);
+        //update session team id
+        $_SESSION['team_id'] = $player->team_id;
         //Finally redirect back to team view
         redirect('/pages/view_team.php');
     } else {
