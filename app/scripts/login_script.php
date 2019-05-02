@@ -25,6 +25,7 @@ if ($output = mysqli_fetch_assoc($result)) {
         /**BUG??????? ||
          *            V
          */
+        $_SESSION['role_id'] = $output['role_id'];
         $out_player = $player->fetch_player($_SESSION['user_id']);
         $_SESSION['player_id'] = $out_player['id'];
         $_SESSION['player_name'] = $out_player['name'];

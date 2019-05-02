@@ -28,10 +28,18 @@ try {
         //Insert into players if rows effected > 1 ...
         if ($player->create()) {
 
+            dd($user);
             //Set session variables
             $_SESSION['user_id'] = $user->last_insert_id();
+
+            $_SESSION['role_id'] = $output['role_id'];
+
+            $_SESSION['role_id'] = $output['role_id'];
+
             $_SESSION['player_id'] = $player->last_insert_id();
+
             $_SESSION['player_name'] = $player->name;
+
             $_SESSION['team_id'] = $player->team_id;
 
             //Unset errors if any exist

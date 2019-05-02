@@ -23,6 +23,8 @@ $player->read_single();
 
 $player->team_id = $_GET['team_id'];
 
+$player->user_id = $_SESSION['user_id'];
+
 $_SESSION['team_id'] = $player->team_id;
 
 $player->update();

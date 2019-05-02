@@ -37,7 +37,7 @@ $sql = "SELECT * FROM players WHERE team_id=" . $team->id;
                         <div class="c-media__content">
                             <h5 class="c-media__subtitle u-text--regular">TEAM</h5>
                             <div class="u-text--bold">
-                                <?php echo $team->name ?><small class="u-text--default u-text--regular" id="teamCount">(<?php echo $team->team_size . ' Players' ?>)</small>
+                                <?php echo $team->name ?><small class="u-text--default u-text--regular" id="teamCount"> (<?php echo $team->team_size . ' Players' ?>)</small>
                             </div>
                         </div>
                     </div>
@@ -55,9 +55,11 @@ $sql = "SELECT * FROM players WHERE team_id=" . $team->id;
                             </div>
                             <div id="player-view">
                                 <div class="l-actions contact__right">
-                                    <div class="c-button c-button--danger c-button--sm c-button--delete">
-                                        <a href="<?php echo url('/pages/remove_player.php?player_id=' . $player['id']); ?>" style="color:#ffffff;">Remove</a>
-                                    </div>
+                                    <?php if ($_SESSION['role_id'] == 2) { ?>
+                                        <div class="c-button c-button--danger c-button--sm c-button--delete">
+                                            <a href="<?php echo url('/pages/remove_player.php?player_id=' . $player['id']); ?>" style="color:#ffffff;">Remove</a>
+                                        </div>
+                                    <?php } ?>
                                     <div class="c-button c-button--default c-button--sm c-button--view">
                                         <a href="<?php echo url('/pages/view_player.php?player_id=' . $player['id']); ?>" style="color:#ffffff;">View</a>
                                     </div>

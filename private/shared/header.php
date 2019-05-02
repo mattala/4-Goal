@@ -53,10 +53,18 @@
                 <div class="row">
                     <div class="nav-content col s9" id="navbar">
                         <ul class="tabs tabs-transparent left">
-                            <li class="tab"><a href="<?php echo url('index.php'); ?>">Home</a></li>
-                            <li class="tab"><a href="<?php echo url('/pages/create_team.php'); ?> ">Create a team</a></li>
-                            <li class="tab"><a href="#test2">Test 2</a></li>
-                            <li class="tab"><a href="#test4">Test 4</a></li>
+                            <li class="tab">
+                                <a class="<?php active_page('index.php'); ?>" href="<?php echo url('index.php'); ?>">Home</a>
+                            </li>
+                            <li class="tab">
+                                <a class="<?php active_page('/pages/create_team.php'); ?>" href=" <?php echo url('/pages/create_team.php'); ?> ">Create a team</a>
+                            </li>
+                            <li class=" tab">
+                                <a class="<?php active_page('/pages/games.php'); ?>" href="<?php echo url('/pages/games.php'); ?>">Join a Game</a>
+                            </li>
+                            <li class="tab">
+                                <a class="" href=" #test4">Test 4</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="col s3">

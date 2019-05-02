@@ -14,6 +14,7 @@ class User extends ModelsBase
 
     public $password;
 
+    public $role_id;
     ///Still working here..
     public function __construct(PDO $db)
     {
@@ -64,5 +65,33 @@ class User extends ModelsBase
         $row = $stmt->fetch();
         $row['email'] = $this->email;
         $row['password'] = $this->password;
+    }
+
+    public function update()
+    {
+        $sql = 'UPDATE ' . $this->table .
+            ' SET   
+                 email=:email,
+                 password=:password,
+                 role_id=:role_id   
+            WHERE
+                    id = :id
+            LIMIT 1';
+        //Prepare statement
+        $stmt = $this->conn->prepare($sql);
+
+        //Bind Parameters
+        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':email', $this->email);
+        $stmt->bindParam(':password', $this->password);
+        $stmt->bindParam(':role_id', $this->role_id);
+
+        //If the prepared statement executes
+        if ($stmt->execute()) {
+            return true;
+        }
+        //When insert fails
+        echo "Error: " . $stmt->error;
+        return false;
     }
 }
