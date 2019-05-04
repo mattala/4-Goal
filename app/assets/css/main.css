@@ -37,3 +37,29 @@ main {
 	max-height: auto;
 	display: inline-block;
 }
+.games {
+	width: 70%;
+	min-height: 300px;
+	max-height: auto;
+	display: inline-block;
+}
+
+#add {
+	position: fixed;
+	bottom: 5em;
+	right: 5em;
+}
+
+.active {
+	border-bottom: #fff solid;
+}
+
+.vs {
+	position: relative;
+	top: 5rem;
+}
+
+.games-join {
+	position: relative;
+	bottom: 1rem;
+}

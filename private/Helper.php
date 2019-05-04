@@ -77,6 +77,7 @@ function dd($getting_dumped)
 
 /**
  * Handles URL manipulation
+ * @param string $script_name script path string from /app/
  * @return bool check if the reference url is correct | Internally uses url()
  */
 function is_from($script_name)
@@ -101,4 +102,13 @@ function is_from($script_name)
 function session(String $session_var_name)
 {
     return $_SESSION[$session_var_name];
+}
+
+/**
+ * Alias function $_SERVER['PHP_SELF']
+ * @return string URL to current page
+ */
+function self()
+{
+    return $_SERVER['PHP_SELF'];
 }

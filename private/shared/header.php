@@ -17,10 +17,21 @@
     <link rel="stylesheet" href="<?php echo url('/assets/css/main.css'); ?>">
     <!-- Display $title if it is not set display 4&Goal -->
     <title><?php echo $title ?? '4&Goal' ?></title>
+    <!-- Scripts that will be enabled only for specific pages -->
     <!-- Conditional Script -->
-    <?php if (is_active('/pages/view_team.php')) : ?>
+    <?php if (is_active('/pages/view_team.php')) { ?>
         <link rel="stylesheet" href="<?php echo url('assets/css/team.css'); ?>">
-    <?php endif; ?>
+    <?php } ?>
+    <!-- JQuery UI Only for datetime picking -->
+    <?php if (is_active('/pages/create_game.php')) { ?>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+            $(function() {
+                $("#datepicker").datepicker();
+            });
+        </script>
+    <?php } ?>
 </head>
 
 <body>
@@ -57,10 +68,10 @@
                                 <a class="<?php active_page('index.php'); ?>" href="<?php echo url('index.php'); ?>">Home</a>
                             </li>
                             <li class="tab">
-                                <a class="<?php active_page('/pages/create_team.php'); ?>" href=" <?php echo url('/pages/create_team.php'); ?> ">Create a team</a>
+                                <a class="<?php active_page('/pages/create_team.php'); ?>" href=" <?php echo url('/pages/create_team.php'); ?> ">Create team</a>
                             </li>
                             <li class=" tab">
-                                <a class="<?php active_page('/pages/games.php'); ?>" href="<?php echo url('/pages/games.php'); ?>">Join a Game</a>
+                                <a class="<?php active_page('/pages/view_games.php'); ?>" href="<?php echo url('/pages/view_games.php'); ?>">Join Game</a>
                             </li>
                             <li class="tab">
                                 <a class="" href=" #test4">Test 4</a>

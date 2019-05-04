@@ -18,7 +18,9 @@ $user->email = $email;
 
 $user->password = password_hash($password, PASSWORD_BCRYPT);
 
-
+/**
+ * Handles PDO Exceptions
+ */
 try {
     if ($user->register()) {
         //Assigning variables to player
@@ -27,12 +29,8 @@ try {
         $player->user_id = $user->last_insert_id();
         //Insert into players if rows effected > 1 ...
         if ($player->create()) {
-
-            dd($user);
             //Set session variables
             $_SESSION['user_id'] = $user->last_insert_id();
-
-            $_SESSION['role_id'] = $output['role_id'];
 
             $_SESSION['role_id'] = $output['role_id'];
 
@@ -60,7 +58,11 @@ try {
         back();
     }
 } catch (PDOException $e) {
-    /**error code to a duplicate record 23000 */
-    $_SESSION['errors'] = ['email' => 'Email is already in use, try a different one.'];
+    /** error code: 23000 duplicate index  */
+    $_SESSION['errors'] = [
+        'email' => 'Email is already in use, try a different one.',
+        'error_code' => $e->getCode()
+    ];
+
     back();
 }

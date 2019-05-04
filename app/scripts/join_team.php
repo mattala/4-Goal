@@ -28,6 +28,7 @@ $player->user_id = $_SESSION['user_id'];
 $_SESSION['team_id'] = $player->team_id;
 
 $player->update();
+
 clear_errors();
 
 redirect('index');

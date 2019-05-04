@@ -88,7 +88,7 @@ class Player extends ModelsBase
             return true;
         }
         //When insert fails
-        echo "Encountered Error: " . $stmt->error;
+        echo "Error: " . $stmt->error;
         return false;
     }
     public function read_single()
