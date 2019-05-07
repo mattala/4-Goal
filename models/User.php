@@ -61,9 +61,7 @@ class User extends ModelsBase
 
         //It's known that we will fetch one and only one row
         //Fetch Assoc mode
-        $row = $stmt->fetch();
-        $row['email'] = $this->email;
-        $row['password'] = $this->password;
+        return $row = $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function update()
