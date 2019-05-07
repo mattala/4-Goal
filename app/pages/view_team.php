@@ -7,7 +7,7 @@ $team = new Team($_DB);
 if (isset($_SESSION['team_id'])) {
     $team->id = $_SESSION['team_id'];
 } else {
-    $_SESSION['Errors'] = ['no_team' => 'Create a team or join a existing one to view team.'];
+    $_SESSION['errors'] = ['no_team' => 'Create a team or join an existing one to view team.'];
     redirect('index');
 }
 //Fetch the row with that id
@@ -27,9 +27,6 @@ $sql = "SELECT * FROM players WHERE team_id=" . $team->id;
             <div class="c-card">
                 <div class="c-card__header">
                     <div class="c-card__title">Team Members</div>
-                    <div class="l-actions">
-                        <div class="c-button c-button--primary c-button--sm" id="mobileAddBtn">Invite +</div>
-                    </div>
                 </div>
                 <div class="c-card__body">
                     <div class="c-media">
@@ -56,12 +53,12 @@ $sql = "SELECT * FROM players WHERE team_id=" . $team->id;
                             <div id="player-view">
                                 <div class="l-actions contact__right">
                                     <?php if ($_SESSION['role_id'] == 2) { ?>
-                                        <div class="c-button c-button--danger c-button--sm c-button--delete">
-                                            <a href="<?php echo url('/pages/remove_player.php?player_id=' . $player['id']); ?>" style="color:#ffffff;">Remove</a>
+                                        <div>
+                                            <a class="c-button c-button--danger c-button--sm c-button--delete" href="<?php echo url('/pages/remove_player.php?player_id=' . $player['id']); ?>" style="color:#ffffff;">Remove</a>
                                         </div>
                                     <?php } ?>
-                                    <div class="c-button c-button--default c-button--sm c-button--view">
-                                        <a href="<?php echo url('/pages/view_player.php?player_id=' . $player['id']); ?>" style="color:#ffffff;">View</a>
+                                    <div>
+                                        <a class="c-button c-button--default c-button--sm c-button--view" href="<?php echo url('/pages/view_player.php?player_id=' . $player['id']); ?>" style="color:#ffffff;">View</a>
                                     </div>
                                 </div>
                             </div>

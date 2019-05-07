@@ -18,6 +18,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
+
                                     <h6>Max Team Size</h6>
                                     <p>
                                         <label>

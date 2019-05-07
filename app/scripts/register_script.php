@@ -17,6 +17,13 @@ $player = new Player($_DB);
 $user->email = $email;
 
 $user->password = password_hash($password, PASSWORD_BCRYPT);
+clear_errors();
+/**Form Validation */
+
+if ($password !== $password_confirm) {
+    $_SESSION['errors'] = ['validation' => 'Password must match!'];
+    back();
+}
 
 /**
  * Handles PDO Exceptions
@@ -60,8 +67,7 @@ try {
 } catch (PDOException $e) {
     /** error code: 23000 duplicate index  */
     $_SESSION['errors'] = [
-        'email' => 'Email is already in use, try a different one.',
-        'error_code' => $e->getCode()
+        'email' => 'Email is already in use, try a different one.'
     ];
 
     back();

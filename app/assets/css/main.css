@@ -63,3 +63,8 @@ main {
 	position: relative;
 	bottom: 1rem;
 }
+
+.field_name {
+	display: inline;
+	border-bottom: #66bb6a solid;
+}

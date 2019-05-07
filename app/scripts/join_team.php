@@ -2,6 +2,8 @@
 require_once '../../private/initialize.php';
 use Models\Player;
 
+use Models\User;
+
 /** 
  * anonymous users can't join a team must sign up first
  * handle requests to join a team
@@ -11,8 +13,8 @@ use Models\Player;
  */
 if (!isset($_SESSION['user_id'])) {
     //New Validation Variable Yellow text panel?
-    $_SESSION['warnings'] = 'Login first to join a team.';
-    redirect('Auth/login');
+    $_SESSION['warnings'] = ['no_team' => 'Login first to join a team.'];
+    back();
 }
 
 $player = new Player($_DB);
@@ -20,6 +22,23 @@ $player = new Player($_DB);
 $player->id = $_SESSION['player_id'];
 
 $player->read_single();
+
+//Fetch user to update role id
+$user = new User($_DB);
+
+$user->id = $_SESSION['user_id'];
+
+$user->read_single();
+
+//Team manager leaves team.
+if ($user->role_id == 2) {
+    //Update role id and Session Var
+    $user->role_id = 1;
+    $_SESSION['role_id'] = $user->role_id;
+}
+
+//Update user role
+$user->update();
 
 $player->team_id = $_GET['team_id'];
 

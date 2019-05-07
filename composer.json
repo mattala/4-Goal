@@ -8,8 +8,5 @@
 			"models/",
 			"private/"
 		]
-	},
-	"require": {
-		"pusher/pusher-php-server": "^3.4"
 	}
 }

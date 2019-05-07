@@ -5,9 +5,13 @@
 require_once '../../private/initialize.php';
 
 use Models\Game;
+use Models\Fields;
 
-$Games = new Game($_DB);
-$result = $Games->read();
+
+$games = new Game($_DB);
+$result = $games->read();
+
+$fields = new Fields($_DB);
 ?>
 <!-- Shared header title before calling this script for custom page titles -->
 <?php include_once SHARED_PATH . '/header.php' ?>
@@ -15,19 +19,30 @@ $result = $Games->read();
     <div class="container center">
         <div class="row">
             <h3>Upcoming Games</h3>
-
+            <!-- handle errors -->
+            <?php validate(); ?>
         </div>
 
         <!-- First Loop Fetching All Games -->
         <?php while ($game = $result->fetch(PDO::FETCH_ASSOC)) { ?>
             <!-- Teams counter for each game to determine if a join button is need. && Reset Counter for next game iteration.  -->
             <?php $team_count = 0 ?>
-
+            <!-- Getting fields information -->
+            <?php
+            $fields->id = $game['field_id'];
+            $fields->read_single();
+            ?>
             <div class="card games center" id="<?php echo $game['id']; ?>" style="margin-right:30px">
                 <div>
                     <!-- One Game Per Card -->
                     <div class="card-content">
                         <span class="card-title  grey-text text-darken-4"><?php echo $game['start_at']; ?> </span>
+                        <div class="row">
+                            <h5 class="field_name"><i class="fas fa-futbol fa-xs"></i> <?php echo $fields->name; ?></h5>
+                            <div><i class="fas fa-money-bill-wave-alt"></i> <?php echo $fields->price; ?></div>
+                            <div><i class="fas fa-star"></i> <?php echo $fields->rating; ?></div>
+                            <div><i class="fas fa-compass"></i> <?php echo $fields->address; ?></div>
+                        </div>
                         <!-- Fetching teams -->
                         <?php $sql = "SELECT * FROM teams WHERE game_id= " . $game['id']; ?>
                         <!-- Wrapper Div -->

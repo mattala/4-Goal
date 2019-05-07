@@ -31,9 +31,11 @@ if ($output = mysqli_fetch_assoc($result)) {
         $_SESSION['player_name'] = $out_player['name'];
         $_SESSION['team_id'] = $out_player['team_id'];
         //Unset errors if any exist
-        if (isset($_SESSION['errors'])) {
-            unset($_SESSION['errors']);
-        }
+        // if (isset($_SESSION['errors'])) {
+        //     unset($_SESSION['errors']);
+        // }
+
+        clear_errors();
         //Redirect to homepage
         redirect('index.php');
     } else {
@@ -41,7 +43,7 @@ if ($output = mysqli_fetch_assoc($result)) {
         back();
     }
 } else {
-    $_SESSION['errors'] = ['failed' => 'Email or Password was wrong.'];
+    $_SESSION['errors'] = ['failed' => 'Email or Password invalid.'];
     back();
 }
 // extract($_POST);

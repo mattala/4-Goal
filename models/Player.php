@@ -91,6 +91,11 @@ class Player extends ModelsBase
         echo "Error: " . $stmt->error;
         return false;
     }
+
+
+    /**
+     * @return void fetch a single row of player
+     */
     public function read_single()
     {
 

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- My CSS Script  -->
     <link rel="stylesheet" href="<?php echo url('/assets/css/main.css'); ?>">
-    <!-- Display $title if it is not set display 4&Goal -->
+    <!-- Dynamic title -->
     <title><?php echo $title ?? '4&Goal' ?></title>
     <!-- Scripts that will be enabled only for specific pages -->
     <!-- Conditional Script -->
@@ -39,7 +39,7 @@
         <div class="container">
             <div class="nav-wrapper">
                 <!-- Dynamically find home page -->
-                <a href="<?php echo url('index.php') ?>" class="brand-logo"><img class="hoverable" src="<?php echo url('/assets/img/56627412_292507938332398_4787761600046039040_n.png'); ?>" id="logo"></a>
+                <a href="<?php echo url('index.php') ?>" class="brand-logo"><img class="hoverable" src="<?php echo url('/assets/img/logo.png'); ?>" id="logo"></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <!-- FOR LOGGED IN USER -->
                     <?php if (!isset($_SESSION['user_id'])) : ?>
@@ -72,9 +72,6 @@
                             </li>
                             <li class=" tab">
                                 <a class="<?php active_page('/pages/view_games.php'); ?>" href="<?php echo url('/pages/view_games.php'); ?>">Join Game</a>
-                            </li>
-                            <li class="tab">
-                                <a class="" href=" #test4">Test 4</a>
                             </li>
                         </ul>
                     </div>

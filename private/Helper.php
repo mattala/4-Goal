@@ -88,11 +88,11 @@ function is_from($script_name)
     // /app/$script_name
     $double_check = url($script_name);
     //Get the position where the /fourgoal/ string starts
-    $start_at = strpos($ref, '/fourgoal');
+    $start_at = strpos($ref, '/FourGoal');
     //Cut the URL starting from -> end of string
     $generic_link = substr($ref, $start_at, strlen($ref));
     //Bool expression
-    return $generic_link === $double_check;
+    return $generic_link == $double_check;
 }
 /**
  * Alias function to $_SESSION['key']
@@ -111,4 +111,19 @@ function session(String $session_var_name)
 function self()
 {
     return $_SERVER['PHP_SELF'];
+}
+
+/**
+ * Shows validation errors and warnings
+ * @return HTML
+ */
+function validate()
+{
+    if (isset($_SESSION['errors'])) {
+        include_once SHARED_PATH . '/errors.php';
+    }
+
+    if (isset($_SESSION['warnings'])) {
+        include_once SHARED_PATH . '/warnings.php';
+    }
 }

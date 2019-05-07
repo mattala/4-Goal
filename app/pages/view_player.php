@@ -3,7 +3,7 @@
 
 use Models\Player;
 
-if (is_from('/pages/view_team.php') && isset($_GET['player_id'])) {
+if (isset($_GET['player_id'])) {
     $player = new Player($_DB);
     //Assign id to object
     $player->id = $_GET['player_id'];

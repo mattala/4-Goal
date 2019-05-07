@@ -13,36 +13,34 @@ use Models\Player;
  */
 // $_SERVER['HTTP_REFERER']
 //Will only accept GET requests from these URLS
-if (is_from('/pages/view_team.php') || is_from('/pages/remove_player.php?player_id=' . $_SESSION['temp_id'])) {
 
-    $player = new Player($_DB);
-    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['player_id'])) {
-        $player->id = $_GET['player_id'];
-        //Store id as a session var
-        $_SESSION['temp_id'] = $player->id;
-        //Get the player with that id and bind to the current instance player
-        $player->read_single();
-    } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        //Set ID
-        $player->id = $_SESSION['temp_id'];
-        //Get player info assigned to this instance of player
-        $player->read_single();
-        //Remove player from team
-        $player->team_id = NULL;
-        //Update player by removing his team id
-        $player->update();
-        //Clear temp id
-        unset($_SESSION['temp_id']);
-        //update session team id
-        $_SESSION['team_id'] = $player->team_id;
-        //Finally redirect back to team view
-        redirect('/pages/view_team.php');
-    } else {
-        back();
-    }
-} else {
+$player = new Player($_DB);
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['player_id']) && is_from('/pages/view_team.php')) {
+    $player->id = $_GET['player_id'];
+    //Store id as a session var
+    $_SESSION['temp_id'] = $player->id;
+    //Get the player with that id and bind to the current instance player
+    $player->read_single();
+} elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    //Set ID
+    $player->id = $_SESSION['temp_id'];
+    //Get player info assigned to this instance of player
+    $player->read_single();
+    //Remove player from team
+    $player->team_id = NULL;
+    //Update player by removing his team id
+    $player->update();
+    //Clear temp id
+    unset($_SESSION['temp_id']);
+    //update session team id
+    $_SESSION['team_id'] = $player->team_id;
+    //Finally redirect back to team view
     redirect('/pages/view_team.php');
+} else {
+    // back();
 }
+
+
 ?>
 <!-- Shared header title before calling this script for custom page titles -->
 <?php include_once SHARED_PATH . '/header.php' ?>
@@ -87,9 +85,9 @@ if (is_from('/pages/view_team.php') || is_from('/pages/remove_player.php?player_
                                     </button>
                                 </div>
                                 <div class="input-field col s2 ">
-                                    <button class="waves-effect waves-light btn grey darken-1" type="submit">Cancel
-
-                                    </button>
+                                    <div>
+                                        <a class="waves-effect waves-light btn grey darken-1 white-text" href="<?php echo url('/pages/view_team.php'); ?>">Cancel</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

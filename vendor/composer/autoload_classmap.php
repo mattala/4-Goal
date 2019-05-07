@@ -7,6 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Database' => $baseDir . '/private/Database.php',
+    'Models\\Fields' => $baseDir . '/models/Fields.php',
+    'Models\\Game' => $baseDir . '/models/Game.php',
     'Models\\ModelsBase' => $baseDir . '/models/ModelsBase.php',
     'Models\\Player' => $baseDir . '/models/Player.php',
     'Models\\Team' => $baseDir . '/models/Team.php',

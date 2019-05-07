@@ -6,8 +6,9 @@ include SHARED_PATH . '/header.php';
 ?>
 <main>
     <div class="container">
-        <div class="row card valign-wrapper">
-            <form class="col s12" action="<?php echo url('/scripts/register_script.php'); ?>" method="POST">
+        <?php validate(); ?>
+        <div class="row">
+            <form class="col s12 m6 offset-m3 card" action="<?php echo url('/scripts/register_script.php'); ?>" method="POST">
                 <div class="row"></div>
                 <div class="row center">
                     <span class="card-title center black-text col s12">Register</span>
@@ -48,7 +49,9 @@ include SHARED_PATH . '/header.php';
                     </div>
                 </div>
             </form>
+
         </div>
-    </div>
+
 </main>
+<?php clear_errors(); ?>
 <?php include_once SHARED_PATH . '/footer.php' ?>

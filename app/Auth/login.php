@@ -36,6 +36,23 @@ include_once SHARED_PATH . '/header.php';
                 </div>
             </div>
         </div>
+
+        <div class="row">
+
+            <!-- Extract to shared? -->
+            <?php if (isset($_SESSION['errors'])) { ?>
+                <div class="col s12 m6 offset-m3">
+                    <div class="card ">
+                        <div class="card-content red lighten-3">
+
+                            <?php foreach ($_SESSION['errors'] as $title => $message) { ?>
+                                <p><i class="fas fa-info-circle"></i> <?php echo $message; ?></p>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
 </main>
 
 <?php include_once SHARED_PATH . '/footer.php'; ?>

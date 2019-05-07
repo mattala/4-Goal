@@ -59,7 +59,7 @@ abstract class ModelsBase
         echo "Error: " . $stmt->error;
         return false;
     }
-    /**Get last inserted id */
+    /**Get database last inserted id */
     public function last_insert_id()
     {
         return $this->conn->lastInsertId();

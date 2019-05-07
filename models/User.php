@@ -7,7 +7,6 @@ use PDO;
 
 class User extends ModelsBase
 {
-    public $conn;
     protected $table = "Users";
 
     public $email;
@@ -93,5 +92,34 @@ class User extends ModelsBase
         //When insert fails
         echo "Error: " . $stmt->error;
         return false;
+    }
+
+    /**
+     * @return void
+     */
+    public function read_single()
+    {
+
+        //SQL to be prepared and then executed
+        $sql = 'SELECT * 
+                FROM ' . $this->table . ' WHERE id = ? LIMIT 1';
+
+        //Prepare statement        
+        $stmt = $this->conn->prepare($sql);
+
+        //Bind parameters
+        $stmt->bindParam(1, $this->id);
+
+        //Execute Query
+        $stmt->execute();
+
+        //It's known that we will fetch one and only one row
+        //Fetch Assoc mode
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //Set properties
+        $this->email = $row['email'];
+        $this->password = $row['password'];
+        $this->role_id = $row['role_id'];
     }
 }
