@@ -57,7 +57,7 @@ $count = 0;
         <?php } ?>
     </div>
 </main>
-<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2fswOX43Lzn4DIscVIJPe_btKUyZFyuk
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/js
         &callback=initMap" type="text/javascript"></script> -->
 <!-- Shared footer -->
 <?php include_once SHARED_PATH . '/footer.php' ?>
