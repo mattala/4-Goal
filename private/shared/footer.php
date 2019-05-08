@@ -29,6 +29,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- General js script -->
   <script src="<?php echo url('assets/js/main.js'); ?>"></script>
+  <script src="<?php echo url('assets/js/search.js'); ?>"></script>
   </body>
 
   </html>

@@ -44,7 +44,7 @@ if (isset($logged_in_user['id'])) {
         redirect('index.php');
     } else {
         $_SESSION['errors'] = ['failed' => 'Email or Password was wrong.'];
-        //back();
+        back();
     }
 } else {
     $_SESSION['errors'] = ['failed' => 'Email or Password invalid.'];

@@ -20,13 +20,15 @@ include SHARED_PATH . '/header.php';
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col s6" id="pw">
                         <input id="password" name="password" type="password" class="validate">
                         <label for="password">Password</label>
+                        <span class="helper-text red-text"><i id="pw-len"></i></span>
                     </div>
                     <div class="input-field col s6">
-                        <input id="last_name" name="password_confirm" type="password" class="validate">
-                        <label for="last_name">Confirm Password</label>
+                        <input id="password_confirm" name="password_confirm" type="password" class="validate">
+                        <label for="password_confirm">Confirm Password</label>
+                        <span class="helper-text red-text"><i id="pw-match"></i></span>
                     </div>
                 </div>
                 <div class="row">
