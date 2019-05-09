@@ -5,6 +5,7 @@
 require_once '../../private/initialize.php';
 
 use Models\Player;
+use Models\PTR;
 
 /**
  *  check if there is any get id & no tampering with URL parameters
@@ -15,29 +16,29 @@ use Models\Player;
 //Will only accept GET requests from these URLS
 
 $player = new Player($_DB);
-if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['player_id']) && is_from('/pages/view_team.php')) {
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['player_id'])) {
     $player->id = $_GET['player_id'];
     //Store id as a session var
-    $_SESSION['temp_id'] = $player->id;
+
     //Get the player with that id and bind to the current instance player
     $player->read_single();
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //Set ID
-    $player->id = $_SESSION['temp_id'];
+
     //Get player info assigned to this instance of player
     $player->read_single();
     //Remove player from team
-    $player->team_id = NULL;
-    //Update player by removing his team id
-    $player->update();
+    $PTR = new PTR();
+    $PTR->player_id = $_POST['player_id'];
+    $PTR->team_id = $_POST['team_id'];
+
+    $PTR->read_single();
+
+    $PTR->delete();
     //Clear temp id
-    unset($_SESSION['temp_id']);
-    //update session team id
-    $_SESSION['team_id'] = $player->team_id;
     //Finally redirect back to team view
-    redirect('/pages/view_team.php');
+    redirect('/pages/view_team.php?team_id=' . $_POST['team_id']);
 } else {
-    // back();
+    back();
 }
 
 
@@ -48,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['player_id']) && is_from(
     <div class='container'>
         <div class="row">
             <div class="col s12 m6 offset-m3">
-                <!-- PATCH                            Alias function needed?       -->
+                <!-- DELETE                            Alias function needed?      -->
                 <!--                                          ||                   -->
                 <!-- Self-Submission XSS exploit              V                    -->
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
@@ -78,6 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['player_id']) && is_from(
                                     <label for="disabled">Man of the Match</label>
                                 </div>
                             </div>
+                            <input type="hidden" name="player_id" value="<?php echo $_GET['player_id']; ?>">
+                            <input type="hidden" name="team_id" value="<?php echo $_GET['team_id']; ?>">
                             <div class="row">
                                 <div class="input-field col s9">
                                     <button class="waves-effect waves-light btn red" type="submit">Delete

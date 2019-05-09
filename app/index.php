@@ -4,10 +4,17 @@
 require_once '../private/initialize.php';
 use Models\Team;
 
+use Models\PTR;
+use Models\Player;
+
+
 $team = new Team($_DB);
+
+$player = new Player($_DB);
 
 $team_collection = $team->read();
 
+$PTR = new PTR();
 //Counter
 $count = 0;
 ?>
@@ -29,27 +36,52 @@ $count = 0;
         </div>
         <div class="row" id="replace">
             <?php foreach ($team_collection as $team_item) {
-                $sql = "SELECT * FROM players WHERE team_id=" . $team_item['id'];
                 ?>
                 <div class="card coli left" style="margin-right:30px">
                     <div>
+                        <?php
 
+                        $PTR->team_id = $team_item['id'];
+                        $players = $PTR->read_team();
+
+                        ?>
                         <div class="card-content">
-                            <span class="card-title  grey-text text-darken-4"><?php echo $team_item['name']; ?> </span>
+                            <div>
+                                <span class="card-title  grey-text text-darken-4"><?php echo $team_item['name']; ?> </span>
+
+                                <!-- Send team id as a GET parameter -->
+                                <a class="btn-small blue" href="<?php echo url('/pages/view_team.php?team_id=' . $team_item['id']); ?>">View <i class="fas fa-eye"></i></a>
+                            </div>
                             <i class="grey-text">Team Members:</i>
                             <ul class="collection">
-                                <?php $count = 0 ?>
-                                <?php foreach ($_DB->query($sql) as $player) { ?>
+                                <?php
+                                //Conditional buttons init
+                                $count = 0;
+                                if (isset($teams_arr)) {
+                                    unset($teams_arr);
+                                }
+                                $teams_arr = [];
+                                ?>
+
+                                <?php foreach ($players as $p) { ?>
                                     <?php $count++; ?>
+                                    <?php
+
+                                    $player->id = $p['player_id'];
+                                    $player->read_single();
+                                    $teams_arr[] = $player->id;
+                                    ?>
                                     <!-- fetch and display players if theres any -->
-                                    <li class="collection-item"><?php echo $player['name']; ?></li>
+                                    <li class="collection-item"><?php echo $player->name ?></li>
 
                                 <?php } ?>
+
                                 <?php if ($count == 0) : ?>
                                     <li class="collection-item"><i class="grey-text" style="font-size:13px;">No Players...</i></li>
                                 <?php endif; ?>
                             </ul>
-                            <?php if (isset($_SESSION['team_id']) && $team_item['id'] == $_SESSION['team_id']) : ?>
+
+                            <?php if (isset($_SESSION['player_id']) && in_array(session('player_id'), $teams_arr)) : ?>
                                 <a class="waves-effect waves-light btn red" href="<?php echo url('/scripts/leave_team.php?team_id=' . $team_item['id']); ?>">Leave Team</a>
                             <?php else : ?>
                                 <?php if ($count !== (int)$team_item['team_size']) { ?>

@@ -68,3 +68,9 @@ main {
 	display: inline;
 	border-bottom: #66bb6a solid;
 }
+
+#edit {
+	position: fixed;
+	bottom: 5em;
+	right: 5em;
+}

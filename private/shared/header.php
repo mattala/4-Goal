@@ -14,14 +14,19 @@
     <!-- ICONS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- My CSS Script  -->
-    <link rel="stylesheet" href="<?php echo url('/assets/css/main.css'); ?>">
+
     <!-- Dynamic title -->
     <title><?php echo $title ?? '4&Goal' ?></title>
-    <!-- Scripts that will be enabled only for specific pages -->
+
+    <!-- Teams page CSS -->
     <!-- Conditional Script -->
     <?php if (is_active('/pages/view_team.php')) { ?>
         <link rel="stylesheet" href="<?php echo url('assets/css/team.css'); ?>">
     <?php } ?>
+
+
+
+    <link rel="stylesheet" href="<?php echo url('/assets/css/main.css'); ?>">
     <!-- JQuery UI Only for datetime picking -->
     <?php if (is_active('/pages/create_game.php')) { ?>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -75,10 +80,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col s3">
-                        <!-- Send team id as a GET parameter -->
-                        <a class="waves-effect waves-light btn-small blue darken-4" href="<?php echo url('/pages/view_team.php'); ?>">View Team</a>
-                    </div>
+
                 </div>
 
             <?php endif; ?>

@@ -12,8 +12,7 @@ class User extends ModelsBase
     public $email;
 
     public $password;
-
-    public $role_id;
+    //Role ID Migrated to breakdown table
     ///Still working here..
     public function __construct(PDO $db)
     {
@@ -69,8 +68,7 @@ class User extends ModelsBase
         $sql = 'UPDATE ' . $this->table .
             ' SET   
                  email=:email,
-                 password=:password,
-                 role_id=:role_id   
+                 password=:password
             WHERE
                     id = :id
             LIMIT 1';
@@ -81,7 +79,6 @@ class User extends ModelsBase
         $stmt->bindParam(':id', $this->id);
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':password', $this->password);
-        $stmt->bindParam(':role_id', $this->role_id);
 
         //If the prepared statement executes
         if ($stmt->execute()) {

@@ -4,6 +4,9 @@ use Models\Player;
 
 use Models\User;
 
+
+use Models\PTR;
+
 /** 
  * - handle requests to leave a team
  * - update team_id with the get team id
@@ -11,43 +14,24 @@ use Models\User;
  * - If the team loader left the team then his role id should update
  * - redirect back to index
  */
+
+//Very unlikely
 if (!isset($_SESSION['user_id'])) {
     //New Validation Variable Yellow text panel?
-    $_SESSION['warnings'] = 'Login first to join a team.';
+    $_SESSION['warnings'] = 'Login first to leave a team.';
     redirect('Auth/login');
 }
 
-$player = new Player($_DB);
+$PTR = new PTR();
 
-$player->id = $_SESSION['player_id'];
+$PTR->player_id = session('player_id');
 
-$player->read_single();
+$PTR->team_id = $_GET['team_id'];
 
-//Fetch user to update role id
-$user = new User($_DB);
+$PTR->read_single();
+$PTR->delete();
 
-$user->id = $_SESSION['user_id'];
 
-$user->read_single();
-
-//Team manager leaves team.
-if ($user->role_id == 2) {
-    //Update role id and Session Var
-    $user->role_id = 1;
-    $_SESSION['role_id'] = $user->role_id;
-}
-
-//Update user role
-$user->update();
-
-//Set Team id to NULL
-$player->team_id = NULL;
-//Ensure user id drops for some reason
-$player->user_id = $_SESSION['user_id'];
-//Re-assign session team id
-$_SESSION['team_id'] = $player->team_id;
-
-$player->update();
 //Clear errors
 clear_errors();
 

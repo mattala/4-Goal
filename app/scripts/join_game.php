@@ -24,6 +24,7 @@ use Models\Team;
 
 $team = new Team($_DB);
 
+//Get team id..
 $team->id = session('team_id');
 //Fetch team data
 $team->read_single();

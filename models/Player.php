@@ -18,7 +18,7 @@ class Player extends ModelsBase
     public $skill_rating;
     public $man_of_the_match;
     public $user_id;
-    public $team_id;
+    //TEAM ID MIGRATED TO BREAKDOWN TABLE
 
     //Constructor
     public function __construct($db)
@@ -67,8 +67,7 @@ class Player extends ModelsBase
                     phone =:phone,
                     skill_rating =:skill_rating,
                     man_of_the_match =:man_of_the_match,
-                    user_id =:user_id,
-                    team_id =:team_id
+                    user_id =:user_id
             WHERE
                     id = :id
             LIMIT 1';
@@ -82,7 +81,8 @@ class Player extends ModelsBase
         $stmt->bindParam(':man_of_the_match', $this->man_of_the_match);
         $stmt->bindParam(':id', $this->id);
         $stmt->bindParam(':user_id', $this->user_id);
-        $stmt->bindParam(':team_id', $this->team_id);
+        //MIGRATED
+        // $stmt->bindParam(':team_id', $this->team_id);
         //If the prepared statement executes
         if ($stmt->execute()) {
             return true;

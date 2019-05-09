@@ -3,6 +3,8 @@
 
 namespace Models;
 
+use PDO;
+
 abstract class ModelsBase
 {
     //All children classes have a table associated with it
@@ -27,8 +29,9 @@ abstract class ModelsBase
         //Execute in db
         $stmt->execute();
 
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
         //Return the executed statement
-        return $stmt;
+        return $row;
     }
 
     //Read one player

@@ -39,7 +39,7 @@ $title = '4&Goal - Creating A Game';
                                     <!-- init jquery -->
                                     <select name="field_id">
                                         <option value="" disabled selected>Choose your option</option>
-                                        <?php while ($row = $result->fetch()) { ?>
+                                        <?php foreach ($result as $row) { ?>
                                             <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
                                         <?php } ?>
                                     </select>

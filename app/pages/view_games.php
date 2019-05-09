@@ -6,12 +6,18 @@ require_once '../../private/initialize.php';
 
 use Models\Game;
 use Models\Fields;
+use Models\PTR;
+use Models\Player;
 
+$player = new Player($_DB);
 
 $games = new Game($_DB);
 $result = $games->read();
 
 $fields = new Fields($_DB);
+
+$PTR = new PTR();
+
 ?>
 <!-- Shared header title before calling this script for custom page titles -->
 <?php include_once SHARED_PATH . '/header.php' ?>
@@ -24,7 +30,7 @@ $fields = new Fields($_DB);
         </div>
 
         <!-- First Loop Fetching All Games -->
-        <?php while ($game = $result->fetch(PDO::FETCH_ASSOC)) { ?>
+        <?php foreach ($result as $game) { ?>
             <!-- Teams counter for each game to determine if a join button is need. && Reset Counter for next game iteration.  -->
             <?php $team_count = 0 ?>
             <!-- Getting fields information -->
@@ -58,13 +64,20 @@ $fields = new Fields($_DB);
                                     <ul class="collection">
                                         <!-- Third Loop Fetching Players -->
                                         <?php
-                                        $players_sql = 'SELECT name FROM players where team_id=' . $team['id'];
-                                        foreach ($_DB->query($players_sql) as $player) { ?>
-                                            <?php $count = 0 ?>
 
+                                        $PTR->team_id = $team['id'];
+
+                                        $players = $PTR->read_team();
+
+                                        foreach ($players as $p) { ?>
+                                            <?php $count = 0 ?>
+                                            <?php
+                                            $player->id = $p['player_id'];
+                                            $player->read_single();
+                                            ?>
                                             <?php $count++; ?>
                                             <!-- fetch and display players if theres any -->
-                                            <li class="collection-item"><?php echo $player['name']; ?></li>
+                                            <li class="collection-item"><?php echo $player->name; ?></li>
 
                                             <?php if ($count == 0) : ?>
                                                 <li class="collection-item"><i class="grey-text" style="font-size:13px;">No Players...</i></li>
