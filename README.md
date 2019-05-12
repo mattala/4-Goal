@@ -3,7 +3,7 @@ A football match making website
 
 ## Setup
  -  Import Database file four_and_goal.sql
- -  run  ```
+ -  Run  ```
           $ composer dump-autoload
-          ```
- - create file private/env.php file with DB credentials as constants 
+          ```  to autoload model classes
+ - Create file private/env.php file with DB credentials as constants 
